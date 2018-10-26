@@ -4,13 +4,14 @@ import ru.sbt.rgrtu.gol.cli.game.Gol;
 
 public abstract class AbstractConsolePresentation implements Presentation {
     private final Gol gol;
-    private String symbol;
+    private String[] symbol;
 
-    public AbstractConsolePresentation(Gol gol) {
+    public AbstractConsolePresentation(Gol gol, String... symbol) {
         this.gol = gol;
+        this.symbol = symbol;
     }
 
-    protected String getSymbol() {
+    protected String[] getSymbol() {
         return symbol;
     }
 
@@ -18,7 +19,7 @@ public abstract class AbstractConsolePresentation implements Presentation {
         return gol;
     }
 
-    public void setSymbol(String symbol) {
+    public void setSymbol(String[] symbol) {
         this.symbol = symbol;
     }
 
@@ -28,7 +29,7 @@ public abstract class AbstractConsolePresentation implements Presentation {
         out.append(String.format("===== %1$05d =====", getGol().getGeneration())).append("\n");
         for (int y = 0; y < getGol().getSizeY(); y++) {
             for (int x = 0; x < getGol().getSizeX(); x++) {
-                out.append(getGol().getPoint(x, y) ? symbol : " ");
+                out.append(getGol().getPoint(x, y) ? symbol[0] : " ");
             }
             out.append("\n");
         }

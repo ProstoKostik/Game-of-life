@@ -6,8 +6,7 @@ import java.io.UnsupportedEncodingException;
 
 public class SmilePresentation extends AbstractConsolePresentation {
 
-    @Override
-    protected String getSymbol() {
+    private static String getSmile() {
         try {
             return new String(new byte[]{(byte) 0xf0, (byte) 0x9f, (byte) 0x98, (byte) 0x80},
                     "UTF-8"
@@ -19,7 +18,6 @@ public class SmilePresentation extends AbstractConsolePresentation {
     }
 
     public SmilePresentation(Gol gol) {
-        super(gol);
-        setSymbol(getSymbol());
+        super(gol, getSmile());
     }
 }

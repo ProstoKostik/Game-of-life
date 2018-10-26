@@ -4,6 +4,10 @@ import ru.sbt.rgrtu.gol.cli.game.Gol;
 
 public class ColoredPresentation extends AbstractConsolePresentation implements Presentation {
 
+    private static final String GREEN_BACKGROUND = "\033[42m";
+    private static final String BLACK_BACKGROUND = "\033[40m";
+    private static final String RESET = "\033[0m";
+
     public ColoredPresentation(Gol gol) {
         super(gol);
     }
@@ -14,12 +18,12 @@ public class ColoredPresentation extends AbstractConsolePresentation implements 
         out.append(String.format("===== %1$05d =====", getGol().getGeneration())).append("\n");
         for (int y = 0; y < getGol().getSizeY(); y++) {
             for (int x = 0; x < getGol().getSizeX(); x++) {
-                out.append(getGol().getPoint(x,y)
-                        ? "\033[42m" // Green background
-                        : "\033[40m" // Black background
+                out.append(getGol().getPoint(x, y)
+                        ? GREEN_BACKGROUND // Green background
+                        : BLACK_BACKGROUND // Black background
                 ).append(" ");
             }
-            out.append("\033[0m").append("\n"); // reset
+            out.append(RESET).append("\n"); // reset
         }
         System.out.println(out);
     }

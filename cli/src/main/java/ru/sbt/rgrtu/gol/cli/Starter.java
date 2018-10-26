@@ -18,9 +18,9 @@ public class Starter {
  //       ConfigurationProvider cpl = createConfigurationPropertiesLoader();
         ConfigurationProvider cpl = createConfigurationPropertiesLoaderExtend();
         Gol gol = new Gol(cpl);
-        Presentation presentation = new AtAndSpacePresentation(gol);
-//        Presentation presentation = new SmilePresentation(gol);
-//        Presentation presentation = new ColoredPresentation(gol);
+ //       Presentation presentation = new AtAndSpacePresentation(gol);
+ //       Presentation presentation = new SmilePresentation(gol);
+        Presentation presentation = new ColoredPresentation(gol);
 
  //       Controller controller = new FrameByFrameController(gol, presentation);
         Controller controller = new TimedController(gol, presentation);
