@@ -59,10 +59,6 @@ public class Gol {
         return current[(sizeX + x) % sizeX][(sizeY + y) % sizeY];
     }
 
-    public ConfigurationProvider getConfigurationProvider() {
-        return configurationProvider;
-    }
-
     public void init() {
         Configuration configuration = configurationProvider.getConfiguration();
         this.seed = configuration.getSeed();
