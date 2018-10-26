@@ -21,9 +21,10 @@ public class TimedController implements Controller {
     public TimedController(Gol gol, Presentation presentation) {
         this.gol = gol;
         this.presentation = presentation;
-        if (gol.getConfigurationProvider().getConfiguration() instanceof ConfigurationExtended)
+        if (gol.getConfigurationProvider().getConfiguration() instanceof ConfigurationExtended) {
             configuration = (ConfigurationExtended) gol.getConfigurationProvider().getConfiguration();
-        sleep = configuration.getTime();
+            sleep = configuration.getTime();
+        }
     }
 
     @Override
