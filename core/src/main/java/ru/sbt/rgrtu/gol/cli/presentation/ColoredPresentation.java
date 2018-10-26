@@ -2,21 +2,19 @@ package ru.sbt.rgrtu.gol.cli.presentation;
 
 import ru.sbt.rgrtu.gol.cli.game.Gol;
 
-public class ColoredPresentation implements Presentation {
-
-    private final Gol gol;
+public class ColoredPresentation extends AbstractConsolePresentation implements Presentation {
 
     public ColoredPresentation(Gol gol) {
-        this.gol = gol;
+        super(gol);
     }
 
     @Override
     public void show() {
         StringBuilder out = new StringBuilder();
-        out.append(String.format("===== %1$05d =====", gol.getGeneration())).append("\n");
-        for (int y = 0; y < gol.getSizeY(); y++) {
-            for (int x = 0; x < gol.getSizeX(); x++) {
-                out.append(gol.getPoint(x,y)
+        out.append(String.format("===== %1$05d =====", getGol().getGeneration())).append("\n");
+        for (int y = 0; y < getGol().getSizeY(); y++) {
+            for (int x = 0; x < getGol().getSizeX(); x++) {
+                out.append(getGol().getPoint(x,y)
                         ? "\033[42m" // Green background
                         : "\033[40m" // Black background
                 ).append(" ");
