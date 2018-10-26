@@ -1,9 +1,6 @@
 package ru.sbt.rgrtu.gol.cli.game;
 
-import ru.sbt.rgrtu.gol.cli.config.Configuration;
-import ru.sbt.rgrtu.gol.cli.config.ConfigurationProvider;
-
-import java.util.Random;
+import ru.sbt.rgrtu.gol.cli.initialization.Initializer;
 
 /**
  * Game of Life.
@@ -14,9 +11,8 @@ import java.util.Random;
  */
 public class Gol {
 
-    private final ConfigurationProvider configurationProvider;
+    private final Initializer initializer;
 
-    private long seed;
     private int sizeX;
     private int sizeY;
 
@@ -28,12 +24,8 @@ public class Gol {
         return new boolean[sizeX][sizeY];
     }
 
-    /**
-     * Create an instance with settings from a given file.
-     * @param configurationProvider provider of simulation settings
-     */
-    public Gol(ConfigurationProvider configurationProvider) {
-        this.configurationProvider = configurationProvider;
+    public Gol(Initializer initializer) {
+        this.initializer = initializer;
     }
 
     public int getSizeX() {
@@ -44,13 +36,16 @@ public class Gol {
         return sizeY;
     }
 
-    /** Number of current generation. */
+    /**
+     * Number of current generation.
+     */
     public long getGeneration() {
         return generation;
     }
 
     /**
      * Get current value of the point.
+     *
      * @param x abscissa
      * @param y ordinate
      * @return current value
@@ -60,27 +55,17 @@ public class Gol {
     }
 
     public void init() {
-        Configuration configuration = configurationProvider.getConfiguration();
-        this.seed = configuration.getSeed();
-        this.sizeX = configuration.getSizeX();
-        this.sizeY = configuration.getSizeY();
-
-        current = createGeneration();
+        current = initializer.createFirstPopulation();
+        sizeX = current.length;
+        sizeY = current[0].length;
         next = createGeneration();
-
-        Random random = new Random(seed);
-        for (int y = 0; y < sizeY; y++) {
-            for (int x = 0; x < sizeX; x++) {
-                current[x][y] = random.nextBoolean();
-            }
-        }
     }
 
     public void nextStep() {
         for (int y = 0; y < sizeY; y++) {
             for (int x = 0; x < sizeX; x++) {
                 int neighbours = countNeighbours(x, y);
-                next[x][y] = calculateNewValue(getPoint(x,y), neighbours);
+                next[x][y] = calculateNewValue(getPoint(x, y), neighbours);
             }
         }
         current = next;
@@ -90,10 +75,10 @@ public class Gol {
 
     private int countNeighbours(int x, int y) {
         int count = 0;
-        for (int m = x-1; m <= x+1; m++) {
-            for (int n = y-1; n <= y+1; n++) {
-                if (m==x && n==y) continue;
-                if (getPoint(m,n)) count++;
+        for (int m = x - 1; m <= x + 1; m++) {
+            for (int n = y - 1; n <= y + 1; n++) {
+                if (m == x && n == y) continue;
+                if (getPoint(m, n)) count++;
             }
         }
         return count;
