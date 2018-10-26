@@ -1,18 +1,32 @@
-package ru.sbt.rgrtu.gol.config;
+package ru.sbt.rgrtu.gol.cli.config;
 
 /**
  * Game settings
  */
 public class Configuration {
 
-    /** Horizontal size of the board. */
+    /**
+     * Horizontal size of the board.
+     */
     private int sizeX;
-    /** Vertical size of the board. */
+    /**
+     * Vertical size of the board.
+     */
     private int sizeY;
 
-    /** Seed for random board initialization. */
+    /**
+     * Seed for random board initialization.
+     */
     private long seed;
 
+    public Configuration(){
+    }
+
+    public Configuration(int sizeX, int sizeY, long seed) {
+        this.sizeX = sizeX;
+        this.sizeY = sizeY;
+        this.seed = seed;
+    }
 
     public int getSizeX() {
         return sizeX;

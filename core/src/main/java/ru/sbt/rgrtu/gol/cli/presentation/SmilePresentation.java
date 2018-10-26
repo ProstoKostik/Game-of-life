@@ -1,6 +1,6 @@
-package ru.sbt.rgrtu.gol.presentation;
+package ru.sbt.rgrtu.gol.cli.presentation;
 
-import ru.sbt.rgrtu.gol.game.Gol;
+import ru.sbt.rgrtu.gol.cli.game.Gol;
 
 import java.io.UnsupportedEncodingException;
 

@@ -1,4 +1,4 @@
-package ru.sbt.rgrtu.gol.config;
+package ru.sbt.rgrtu.gol.cli.config;
 
 import org.junit.jupiter.api.Test;
 

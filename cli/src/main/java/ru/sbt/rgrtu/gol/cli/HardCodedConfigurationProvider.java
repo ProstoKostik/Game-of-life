@@ -1,7 +1,7 @@
 package ru.sbt.rgrtu.gol.cli;
 
-import ru.sbt.rgrtu.gol.config.Configuration;
-import ru.sbt.rgrtu.gol.config.ConfigurationProvider;
+import ru.sbt.rgrtu.gol.cli.config.Configuration;
+import ru.sbt.rgrtu.gol.cli.config.ConfigurationProvider;
 
 public class HardCodedConfigurationProvider implements ConfigurationProvider {
 

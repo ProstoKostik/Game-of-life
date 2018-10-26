@@ -1,4 +1,4 @@
-package ru.sbt.rgrtu.gol.config;
+package ru.sbt.rgrtu.gol.cli.config;
 
 /** Load simulation settings from any source. */
 public interface ConfigurationProvider {

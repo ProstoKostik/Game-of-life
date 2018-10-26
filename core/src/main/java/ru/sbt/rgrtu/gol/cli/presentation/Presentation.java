@@ -1,4 +1,4 @@
-package ru.sbt.rgrtu.gol.presentation;
+package ru.sbt.rgrtu.gol.cli.presentation;
 
 public interface Presentation {
 

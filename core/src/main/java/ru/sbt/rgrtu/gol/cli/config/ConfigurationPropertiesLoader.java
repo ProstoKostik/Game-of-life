@@ -1,4 +1,4 @@
-package ru.sbt.rgrtu.gol.config;
+package ru.sbt.rgrtu.gol.cli.config;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,7 +21,7 @@ public class ConfigurationPropertiesLoader implements ConfigurationProvider {
     /**
      * Load settings from a file.
      *
-     * @return filled Configuration object
+     * @return filled ConfigurationExtended object
      * @throws RuntimeException when unable to locate or parse a required file
      */
     public Configuration getConfiguration() {
@@ -41,7 +41,7 @@ public class ConfigurationPropertiesLoader implements ConfigurationProvider {
         }
     }
 
-    private Configuration toConfiguration(Properties properties) {
+    protected Configuration toConfiguration(Properties properties) {
         Configuration configuration = new Configuration();
         configuration.setSizeX(Integer.parseInt(properties.getProperty("game.board.size.x")));
         configuration.setSizeY(Integer.parseInt(properties.getProperty("game.board.size.y")));

@@ -1,4 +1,4 @@
-package ru.sbt.rgrtu.gol.controller;
+package ru.sbt.rgrtu.gol.cli.controller;
 
 /** Controls simulations. */
 public interface Controller {

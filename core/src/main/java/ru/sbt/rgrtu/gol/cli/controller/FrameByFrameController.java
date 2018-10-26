@@ -1,7 +1,7 @@
-package ru.sbt.rgrtu.gol.controller;
+package ru.sbt.rgrtu.gol.cli.controller;
 
-import ru.sbt.rgrtu.gol.game.Gol;
-import ru.sbt.rgrtu.gol.presentation.Presentation;
+import ru.sbt.rgrtu.gol.cli.game.Gol;
+import ru.sbt.rgrtu.gol.cli.presentation.Presentation;
 
 import java.util.Scanner;
 

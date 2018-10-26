@@ -1,31 +1,34 @@
 package ru.sbt.rgrtu.gol.cli;
 
-import ru.sbt.rgrtu.gol.config.Configuration;
-import ru.sbt.rgrtu.gol.config.ConfigurationPropertiesLoader;
-import ru.sbt.rgrtu.gol.config.ConfigurationProvider;
-import ru.sbt.rgrtu.gol.controller.Controller;
-import ru.sbt.rgrtu.gol.controller.FrameByFrameController;
-import ru.sbt.rgrtu.gol.game.Gol;
-import ru.sbt.rgrtu.gol.controller.TimedController;
-import ru.sbt.rgrtu.gol.presentation.AtAndSpacePresentation;
-import ru.sbt.rgrtu.gol.presentation.ColoredPresentation;
-import ru.sbt.rgrtu.gol.presentation.Presentation;
-import ru.sbt.rgrtu.gol.presentation.SmilePresentation;
+import ru.sbt.rgrtu.gol.cli.config.Configuration;
+import ru.sbt.rgrtu.gol.cli.config.ConfigurationPropertiesLoader;
+import ru.sbt.rgrtu.gol.cli.config.ConfigurationProvider;
+import ru.sbt.rgrtu.gol.cli.config.time.ConfigurationPropertiesLoaderExtended;
+import ru.sbt.rgrtu.gol.cli.game.Gol;
+import ru.sbt.rgrtu.gol.cli.presentation.Presentation;
+import ru.sbt.rgrtu.gol.cli.presentation.SmilePresentation;
+import ru.sbt.rgrtu.gol.cli.controller.Controller;
+import ru.sbt.rgrtu.gol.cli.controller.*;
 
 public class Starter {
 
     public static void main(String[] args) {
 //        ConfigurationProvider cpl = createHardCodedConfigurationProvider();
 //        ConfigurationProvider cpl = createInlineConfigurationProvider();
-        ConfigurationProvider cpl = createConfigurationPropertiesLoader();
+ //       ConfigurationProvider cpl = createConfigurationPropertiesLoader();
+        ConfigurationProvider cpl = createConfigurationPropertiesLoaderExtend();
         Gol gol = new Gol(cpl);
 //        Presentation presentation = new AtAndSpacePresentation(gol);
         Presentation presentation = new SmilePresentation(gol);
 //        Presentation presentation = new ColoredPresentation(gol);
 
-        Controller controller = new FrameByFrameController(gol, presentation);
-//        Controller controller = new TimedController(gol, presentation);
+ //       Controller controller = new FrameByFrameController(gol, presentation);
+        Controller controller = new TimedController(gol, presentation);
         controller.run();
+    }
+
+    private static ConfigurationProvider createConfigurationPropertiesLoaderExtend(){
+        return new ConfigurationPropertiesLoaderExtended("config.properties");
     }
 
     private static ConfigurationProvider createConfigurationPropertiesLoader() {
@@ -38,10 +41,7 @@ public class Starter {
 
     private static ConfigurationProvider createInlineConfigurationProvider() {
         return () -> {
-            Configuration configuration = new Configuration();
-            configuration.setSeed(20180921L);
-            configuration.setSizeX(150);
-            configuration.setSizeY(35);
+            Configuration configuration = new Configuration(150, 35, 20180921L);
             return configuration;
         };
     }

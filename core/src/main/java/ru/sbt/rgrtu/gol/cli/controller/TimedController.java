@@ -1,7 +1,9 @@
-package ru.sbt.rgrtu.gol.controller;
+package ru.sbt.rgrtu.gol.cli.controller;
 
-import ru.sbt.rgrtu.gol.game.Gol;
-import ru.sbt.rgrtu.gol.presentation.Presentation;
+import ru.sbt.rgrtu.gol.cli.config.Configuration;
+import ru.sbt.rgrtu.gol.cli.config.time.ConfigurationExtended;
+import ru.sbt.rgrtu.gol.cli.game.Gol;
+import ru.sbt.rgrtu.gol.cli.presentation.Presentation;
 
 import java.util.Scanner;
 
@@ -12,11 +14,16 @@ public class TimedController implements Controller {
 
     private final Gol gol;
     private final Presentation presentation;
+    private ConfigurationExtended configuration;
     private volatile boolean stopped;
+    private int sleep = 300;
 
     public TimedController(Gol gol, Presentation presentation) {
         this.gol = gol;
         this.presentation = presentation;
+        if (gol.getConfigurationProvider().getConfiguration() instanceof ConfigurationExtended)
+            configuration = (ConfigurationExtended) gol.getConfigurationProvider().getConfiguration();
+        sleep = configuration.getTime();
     }
 
     @Override
@@ -29,7 +36,7 @@ public class TimedController implements Controller {
             presentation.show();
 
             try {
-                Thread.sleep(300);
+                Thread.sleep(sleep);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

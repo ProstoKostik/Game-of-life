@@ -1,7 +1,7 @@
-package ru.sbt.rgrtu.gol.game;
+package ru.sbt.rgrtu.gol.cli.game;
 
-import ru.sbt.rgrtu.gol.config.Configuration;
-import ru.sbt.rgrtu.gol.config.ConfigurationProvider;
+import ru.sbt.rgrtu.gol.cli.config.Configuration;
+import ru.sbt.rgrtu.gol.cli.config.ConfigurationProvider;
 
 import java.util.Random;
 
@@ -57,6 +57,10 @@ public class Gol {
      */
     public boolean getPoint(int x, int y) {
         return current[(sizeX + x) % sizeX][(sizeY + y) % sizeY];
+    }
+
+    public ConfigurationProvider getConfigurationProvider() {
+        return configurationProvider;
     }
 
     public void init() {
