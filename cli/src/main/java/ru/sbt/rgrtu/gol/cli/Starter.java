@@ -6,7 +6,7 @@ import ru.sbt.rgrtu.gol.cli.config.ConfigurationProvider;
 import ru.sbt.rgrtu.gol.cli.config.time.ConfigurationPropertiesLoaderExtended;
 import ru.sbt.rgrtu.gol.cli.game.Gol;
 import ru.sbt.rgrtu.gol.cli.presentation.Presentation;
-import ru.sbt.rgrtu.gol.cli.presentation.SmilePresentation;
+import ru.sbt.rgrtu.gol.cli.presentation.*;
 import ru.sbt.rgrtu.gol.cli.controller.Controller;
 import ru.sbt.rgrtu.gol.cli.controller.*;
 
@@ -18,8 +18,8 @@ public class Starter {
  //       ConfigurationProvider cpl = createConfigurationPropertiesLoader();
         ConfigurationProvider cpl = createConfigurationPropertiesLoaderExtend();
         Gol gol = new Gol(cpl);
-//        Presentation presentation = new AtAndSpacePresentation(gol);
-        Presentation presentation = new SmilePresentation(gol);
+        Presentation presentation = new AtAndSpacePresentation(gol);
+//        Presentation presentation = new SmilePresentation(gol);
 //        Presentation presentation = new ColoredPresentation(gol);
 
  //       Controller controller = new FrameByFrameController(gol, presentation);
