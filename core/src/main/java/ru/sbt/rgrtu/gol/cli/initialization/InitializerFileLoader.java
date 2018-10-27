@@ -23,8 +23,6 @@ public class InitializerFileLoader implements Initializer {
                 line = reader.readLine();
                 i++;
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,8 +49,6 @@ public class InitializerFileLoader implements Initializer {
                     }
                 i++;
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

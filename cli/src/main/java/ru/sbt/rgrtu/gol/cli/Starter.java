@@ -6,6 +6,7 @@ import ru.sbt.rgrtu.gol.cli.config.ConfigurationProvider;
 import ru.sbt.rgrtu.gol.cli.config.time.TimePropertiesLoader;
 import ru.sbt.rgrtu.gol.cli.config.time.TimeProvider;
 import ru.sbt.rgrtu.gol.cli.game.Gol;
+import ru.sbt.rgrtu.gol.cli.initialization.BitmapInitializer;
 import ru.sbt.rgrtu.gol.cli.initialization.Initializer;
 import ru.sbt.rgrtu.gol.cli.initialization.InitializerFileLoader;
 import ru.sbt.rgrtu.gol.cli.initialization.RandomInitializer;
@@ -19,10 +20,11 @@ public class Starter {
     public static void main(String[] args) {
 //        ConfigurationProvider cpl = createHardCodedConfigurationProvider();
 //        ConfigurationProvider cpl = createInlineConfigurationProvider();
-        ConfigurationProvider cpl = createConfigurationPropertiesLoader();
+//        ConfigurationProvider cpl = createConfigurationPropertiesLoader();
 
-        //       Initializer init = createRandomInitializer(cpl);
-        Initializer init = new InitializerFileLoader("D:\\game_of_life\\cli\\src\\main\\resources\\border.txt");
+        //              Initializer init = createRandomInitializer(cpl);
+   //     Initializer init = new InitializerFileLoader("cli//src//main//resources//border.txt");
+        Initializer init = new BitmapInitializer("cli//src//main//resources//initImage.png");
 
         Gol gol = new Gol(init);
         //       Presentation presentation = new AtAndSpacePresentation(gol);
