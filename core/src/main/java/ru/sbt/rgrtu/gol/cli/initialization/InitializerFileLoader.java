@@ -17,7 +17,7 @@ public class InitializerFileLoader implements Initializer {
     private void initArraySize() {
         try {
             file = new File(path);
-            FileReader fr = new FileReader(path);
+            FileReader fr = new FileReader(file.getPath());
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
             countArrayColumn = line.length();
@@ -35,7 +35,7 @@ public class InitializerFileLoader implements Initializer {
         int i = 0;
         boolean[][] arr = new boolean[countArrayColumn][countArrayRow];
         try {
-            FileReader fr = new FileReader(file);
+            FileReader fr = new FileReader(file.getPath());
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
             while (line != null) {

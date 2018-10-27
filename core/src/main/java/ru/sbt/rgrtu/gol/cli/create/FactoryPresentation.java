@@ -5,6 +5,7 @@ import ru.sbt.rgrtu.gol.cli.game.Gol;
 import ru.sbt.rgrtu.gol.cli.presentation.AtAndSpacePresentation;
 import ru.sbt.rgrtu.gol.cli.presentation.ColoredPresentation;
 import ru.sbt.rgrtu.gol.cli.presentation.SmilePresentation;
+import ru.sbt.rgrtu.gol.cli.presentation.SwingPresentation;
 
 public class FactoryPresentation implements Factory {
 
@@ -25,6 +26,8 @@ public class FactoryPresentation implements Factory {
                 return new ColoredPresentation(gol);
             case AT_AND_SPACE:
                 return new AtAndSpacePresentation(gol);
+            case SWING:
+                return new SwingPresentation(gol);
             default:
                 return null;
         }
