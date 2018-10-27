@@ -4,37 +4,37 @@ import java.io.*;
 
 public class InitializerFileLoader implements Initializer {
 
-    private String file;
+    private String path;
+    private int countArrayRow = 0;
+    private int countArrayColumn = 0;
+    private File file = null;
 
-    public InitializerFileLoader(String file) {
-        this.file = file;
+    public InitializerFileLoader(String path) {
+        this.path = path;
+        initArraySize();
     }
 
-    private int[] getArraySize() {
-        int i = 0;
-        int j = 0;
+    private void initArraySize() {
         try {
-            File file = new File(this.file);
-            FileReader fr = new FileReader(file);
+            file = new File(path);
+            FileReader fr = new FileReader(path);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();
-            j = line.length();
+            countArrayColumn = line.length();
             while (line != null) {
                 line = reader.readLine();
-                i++;
+                countArrayRow++;
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return new int[]{i, j};
     }
 
     @Override
     public boolean[][] createFirstPopulation() {
         int i = 0;
-        boolean[][] arr = new boolean[getArraySize()[1]][getArraySize()[0]];
+        boolean[][] arr = new boolean[countArrayColumn][countArrayRow];
         try {
-            File file = new File(this.file);
             FileReader fr = new FileReader(file);
             BufferedReader reader = new BufferedReader(fr);
             String line = reader.readLine();

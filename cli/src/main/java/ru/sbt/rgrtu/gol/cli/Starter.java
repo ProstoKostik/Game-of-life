@@ -23,7 +23,7 @@ public class Starter {
 //        ConfigurationProvider cpl = createConfigurationPropertiesLoader();
 
         //              Initializer init = createRandomInitializer(cpl);
-   //     Initializer init = new InitializerFileLoader("cli//src//main//resources//border.txt");
+ //       Initializer init = new InitializerFileLoader("cli//src//main//resources//border.txt");
         Initializer init = new BitmapInitializer("cli//src//main//resources//initImage.png");
 
         Gol gol = new Gol(init);
