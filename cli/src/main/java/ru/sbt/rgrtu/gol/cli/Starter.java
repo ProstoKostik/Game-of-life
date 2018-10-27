@@ -5,6 +5,13 @@ import ru.sbt.rgrtu.gol.cli.config.ConfigurationPropertiesLoader;
 import ru.sbt.rgrtu.gol.cli.config.ConfigurationProvider;
 import ru.sbt.rgrtu.gol.cli.config.time.TimePropertiesLoader;
 import ru.sbt.rgrtu.gol.cli.config.time.TimeProvider;
+import ru.sbt.rgrtu.gol.cli.create.Factory;
+import ru.sbt.rgrtu.gol.cli.create.FactoryController;
+import ru.sbt.rgrtu.gol.cli.create.FactoryInitializer;
+import ru.sbt.rgrtu.gol.cli.create.FactoryPresentation;
+import ru.sbt.rgrtu.gol.cli.create.type.TypeController;
+import ru.sbt.rgrtu.gol.cli.create.type.TypeInitializer;
+import ru.sbt.rgrtu.gol.cli.create.type.TypePresentation;
 import ru.sbt.rgrtu.gol.cli.game.Gol;
 import ru.sbt.rgrtu.gol.cli.initialization.BitmapInitializer;
 import ru.sbt.rgrtu.gol.cli.initialization.Initializer;
@@ -18,24 +25,33 @@ import ru.sbt.rgrtu.gol.cli.controller.*;
 public class Starter {
 
     public static void main(String[] args) {
+
+        Factory factoryInitializer = new FactoryInitializer();
+        Factory factoryController = new FactoryController();
+        Factory factoryPresentation = new FactoryPresentation();
+
 //        ConfigurationProvider cpl = createHardCodedConfigurationProvider();
 //        ConfigurationProvider cpl = createInlineConfigurationProvider();
 //        ConfigurationProvider cpl = createConfigurationPropertiesLoader();
 
-        //              Initializer init = createRandomInitializer(cpl);
- //       Initializer init = new InitializerFileLoader("cli//src//main//resources//border.txt");
-        Initializer init = new BitmapInitializer("cli//src//main//resources//initImage.png");
+        //       Initializer init = (RandomInitializer) factoryInitializer.create(TypeInitializer.RANDOM, cpl);
+
+        Initializer init = (InitializerFileLoader) factoryInitializer.create(TypeInitializer.FILE_LOADER,
+                "cli//src//main//resources//border.txt");
+
+//        Initializer init = (BitmapInitializer) factoryInitializer.create(TypeInitializer.BITMAP,
+        //               "cli//src//main//resources//initImage.png");
 
         Gol gol = new Gol(init);
-        //       Presentation presentation = new AtAndSpacePresentation(gol);
-        //       Presentation presentation = new SmilePresentation(gol);
-        Presentation presentation = new ColoredPresentation(gol);
+        Presentation presentation = (AtAndSpacePresentation) factoryPresentation.create(gol, TypePresentation.AT_AND_SPACE);
+        //       Presentation presentation = (SmilePresentation) factoryPresentation.create(gol, TypePresentation.SMILE);
+//        Presentation presentation = (ColoredPresentation) factoryPresentation.create(gol, TypePresentation.COLORED);
 
         //       TimeProvider tmp = createHardCodedTimeProvider();
         TimeProvider tmp = createTimePropertiesLoader();
 
-        //       Controller controller = new FrameByFrameController(gol, presentation);
-        Controller controller = new TimedController(gol, presentation, tmp);
+        //    Controller controller = (FrameByFrameController) factoryController.create(gol, presentation, TypeController.FRAME);
+        Controller controller = (TimedController) factoryController.create(gol, presentation, tmp, TypeController.TIMED);
         controller.run();
     }
 
