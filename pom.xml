@@ -21,6 +21,11 @@
                 <artifactId>gol-core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>ru.sbt.rgrtu</groupId>
+                <artifactId>gol-desktop</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
@@ -34,5 +39,6 @@
     <modules>
         <module>./core</module>
         <module>./cli</module>
+        <module>./desktop</module>
     </modules>
 </project>
