@@ -1,3 +1,4 @@
-ru\sbt\rgrtu\gol\desktop\SwingPresentation.class
-ru\sbt\rgrtu\gol\desktop\GameView.class
+ru\sbt\rgrtu\gol\desktop\Starter.class
 ru\sbt\rgrtu\gol\desktop\listener\SwingPresentationListener.class
+ru\sbt\rgrtu\gol\desktop\presentation\SwingPresentation.class
+ru\sbt\rgrtu\gol\desktop\presentation\GameView.class

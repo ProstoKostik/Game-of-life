@@ -1,4 +1,4 @@
-package ru.sbt.rgrtu.gol.desktop;
+package ru.sbt.rgrtu.gol.desktop.presentation;
 
 import ru.sbt.rgrtu.gol.cli.game.Gol;
 
@@ -16,7 +16,7 @@ public class GameView extends JPanel {
     public GameView(Gol gol) {
         this.gol = gol;
         try {
-            image = ImageIO.read(new File("cli//src//main//resources//human.png"));
+            image = ImageIO.read(new File("desktop//src//main//resources//human.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }

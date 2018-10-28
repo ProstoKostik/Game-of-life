@@ -17,10 +17,6 @@
             <groupId>ru.sbt.rgrtu</groupId>
             <artifactId>gol-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>ru.sbt.rgrtu</groupId>
-            <artifactId>gol-desktop</artifactId>
-        </dependency>
     </dependencies>
 
 </project>

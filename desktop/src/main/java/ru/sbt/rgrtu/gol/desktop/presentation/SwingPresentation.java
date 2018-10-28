@@ -1,11 +1,10 @@
-package ru.sbt.rgrtu.gol.desktop;
+package ru.sbt.rgrtu.gol.desktop.presentation;
 
 import ru.sbt.rgrtu.gol.cli.game.Gol;
 import ru.sbt.rgrtu.gol.cli.presentation.Presentation;
 import ru.sbt.rgrtu.gol.desktop.listener.SwingPresentationListener;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class SwingPresentation implements Presentation {
     private JFrame frame;
