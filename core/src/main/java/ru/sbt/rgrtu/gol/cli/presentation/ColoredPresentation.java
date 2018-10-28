@@ -1,6 +1,8 @@
 package ru.sbt.rgrtu.gol.cli.presentation;
 
 import ru.sbt.rgrtu.gol.cli.game.Gol;
+import ru.sbt.rgrtu.gol.cli.presentation.AbstractConsolePresentation;
+import ru.sbt.rgrtu.gol.cli.presentation.Presentation;
 
 public class ColoredPresentation extends AbstractConsolePresentation implements Presentation {
 
