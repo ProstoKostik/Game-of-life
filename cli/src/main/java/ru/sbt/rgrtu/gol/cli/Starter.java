@@ -23,30 +23,17 @@ public class Starter {
 //        ConfigurationProvider cpl = createInlineConfigurationProvider();
 //        ConfigurationProvider cpl = createConfigurationPropertiesLoader();
 
-<<<<<<< HEAD
-        //       Initializer init = (RandomInitializer) factoryInitializer.create(TypeInitializer.RANDOM, cpl);
-        Initializer init = (InitializerFileLoader) factoryInitializer.create(TypeInitializer.FILE_LOADER,
-                "cli//src//main//resources//border.txt");
-=======
         //         Initializer init = new RandomInitializer(cpl);
 
         Initializer init = new InitializerFileLoader("cli//src//main//resources//border.txt");
->>>>>>> master
-
         //          Initializer init = new BitmapInitializer("cli//src//main//resources//initImage.png");
 
         Gol gol = new Gol(init);
-<<<<<<< HEAD
- //       Presentation presentation = (AtAndSpacePresentation) factoryPresentation.create(gol, TypePresentation.AT_AND_SPACE);
-        //       Presentation presentation = (SmilePresentation) factoryPresentation.create(gol, TypePresentation.SMILE);
-//        Presentation presentation = (ColoredPresentation) factoryPresentation.create(gol, TypePresentation.COLORED);
-        Presentation presentation = (SwingPresentation) factoryPresentation.create(gol, TypePresentation.SWING);
-=======
+
         // Presentation presentation = new AtAndSpacePresentation(gol);
         //      Presentation presentation = new SmilePresentation(gol);
         //       Presentation presentation = new ColoredPresentation(gol);
         Presentation presentation = new SwingPresentation(gol);
->>>>>>> master
 
         //       TimeProvider tmp = createHardCodedTimeProvider();
         TimeProvider tmp = createTimePropertiesLoader();
